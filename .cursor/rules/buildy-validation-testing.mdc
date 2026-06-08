@@ -1,0 +1,29 @@
+---
+description: BuildY — verify pipeline, ui8px, aria, Go render tests
+globs: "**/*"
+alwaysApply: false
+---
+
+# Validation & testing (BuildY)
+
+## Routine checks
+
+```bash
+bun run verify
+```
+
+Runs: **`templ generate`** → **`build:css`** → **`lint:ui8px`** → **`validate:aria`** → **`go test ./...`**
+
+## Go render tests
+
+Add **`Test*_wireframeRenders`** in `internal/views` for critical surfaces (app shell, home) so layout/mobile sheet/theme/locale markup regress without a browser. See `wireframe_render_test.go`.
+
+## CSS validator
+
+Deferred until brand polish; Tailwind output is not a strict W3C CSS gate in the wireframe phase.
+
+## Coordination
+
+- **`buildy-atomic-ui8px.mdc`** — lint scope, no raw tags, no custom CSS classes
+- **`buildy-aria.mdc`** — manifest + `data-ui8kit` contract
+- **`buildy-fixtures-data.mdc`** — sensible strings for screen readers

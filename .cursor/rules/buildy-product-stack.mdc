@@ -12,13 +12,13 @@ alwaysApply: false
 
 `github.com/fastygo/framework` + `github.com/fastygo/platform` + `github.com/fastygo/templ`
 
-Reference-only UI patterns: `@Blank` — shell, mobile sheet, theme toggle, language switch. **Do not add `@Blank` as a `go.mod` dependency.**
+BuildY owns its starter UI shell, seeded from Blank patterns. **Do not add `@Blank` as a `go.mod` dependency.**
 
 ## UI rules
 
 - Render from **BuildY-owned fixtures** — no hardcoded user-facing copy in templates.
 - Compose with `github.com/fastygo/templ` (`ui/`, `components/`, `utils/`).
-- Mirror **`@Blank/internal/ui/`** registry tree: `layout/`, `components/`, `blocks/`, `widgets/`, `variants/`, `utils/` — see [`@Blank/internal/ui/README.md`](../../@Blank/internal/ui/README.md).
+- Use BuildY's **`internal/ui/`** registry tree: `layout/`, `components/`, `blocks/`, `widgets/`, `variants/`, `utils/` — see `internal/ui/README.md`.
 - Stage reusable sections in `internal/ui/blocks/<group>/`; promote to `fastygo/blocks` only after freeze — do not `require` blocks/widgets modules during mockup slice.
 - App shell in `internal/ui/layout/`; home and workspace views in `internal/views/`.
 - EN/RU via locale fixtures (`locale/en.json`, `locale/ru.json`).

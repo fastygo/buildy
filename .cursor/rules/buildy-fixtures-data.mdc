@@ -1,0 +1,26 @@
+---
+description: BuildY — fixtures, locale JSON, view models
+globs: "**/*"
+alwaysApply: false
+---
+
+# Data & fixtures (BuildY)
+
+## Two layers
+
+1. **`internal/fixtures/`** — embedded `locale/*.json`, typed **`Locale`** in `fixtures.go`, **`LoadLocale(code)`**.
+2. **Handlers** (`internal/site`) — resolve locale from context, build **`views.LayoutData`** / page structs with **already-translated** strings.
+
+## Rules
+
+- User-visible copy lives in **`locale/en.json`**, **`locale/ru.json`**, … — not hard-coded in `.templ`.
+- Extend **`Locale`** + **every** locale file when adding new UI strings (theme labels, nav labels, page copy).
+- **`internal/views`** and **`internal/ui/components`** take props only; no fixture imports in templ.
+- Keep **accessible names** (aria labels, button titles) in fixtures when used as `aria-label`.
+
+## Locale switching
+
+- Header control: **`toggles.LanguageSwitch`** built in `site/feature.go` via **`locale.BuildLangHref`**.
+- Framework cookie/query strategy is configured in `cmd/server/main.go` (`WithLocales`).
+
+See **`buildy-atomic-ui8px.mdc`** for presentation boundaries.

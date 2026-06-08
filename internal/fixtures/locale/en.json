@@ -1,0 +1,23 @@
+{
+  "brand": "BuildY",
+  "footer": "BuildY prototype workspace for FastyGo apps.",
+  "theme": {
+    "label": "Theme",
+    "switch_to_dark": "Switch to dark",
+    "switch_to_light": "Switch to light"
+  },
+  "language_toggle_label": "Language",
+  "home": {
+    "nav_label": "Home",
+    "title": "Home",
+    "welcome": "Welcome",
+    "welcome_brand": "BuildY",
+    "description": "Prototype FastyGo applications from prompts, specs, previews, and generated source."
+  },
+  "sample": {
+    "nav_label": "Sample",
+    "title": "Sample",
+    "description": "Placeholder page for a second navigation item.",
+    "body": "Replace this route and copy with your own pages."
+  }
+}

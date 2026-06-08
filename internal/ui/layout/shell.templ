@@ -1,0 +1,56 @@
+package layout
+
+import (
+	templpkg "github.com/a-h/templ"
+	"github.com/fastygo/templ/ui"
+)
+
+templ Shell(props ShellProps) {
+	<!DOCTYPE html>
+	<html lang={ shellLang(props.Lang) }>
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ props.Title }</title>
+			if props.HeadExtra != nil {
+				@props.HeadExtra
+			}
+		</head>
+		<body class={ shellBodyClass(props) }>
+			if shellHasNavigation(props) {
+				@ui.Block(mobileSheetRootBlock()) {
+					@ui.Box(mobileSheetOverlayBox())
+					@ui.Box(ui.BoxProps{Class: "absolute left-0 top-0 h-full max-h-dvh w-80 max-w-full overflow-y-auto border-r border-border bg-card p-4"}) {
+						@ui.Group(ui.GroupProps{Class: "flex items-center justify-between gap-2"}) {
+							@ui.Box(ui.BoxProps{Attrs: templpkg.Attributes{"id": "ui8kit-mobile-sheet-title"}}) {
+								@ui.Text(ui.TextProps{Tag: "span", Class: "text-sm text-muted-foreground"}, shellBrand(props.BrandName))
+							}
+							@ui.Button(mobileSheetCloseButtonProps()) {
+								✕
+							}
+						}
+						@ui.Box(ui.BoxProps{Class: "mt-4"}) {
+							@ui.Stack(ui.StackProps{Tag: "nav", Class: "w-full gap-1 p-2"}) {
+								@Nav(NavProps{Items: props.NavItems, Active: props.Active, Vertical: true})
+							}
+						}
+					}
+				}
+			}
+			@ui.Box(ui.BoxProps{Class: "flex min-h-screen w-full flex-col"}) {
+				@Header(HeaderProps{
+					BrandName:       props.BrandName,
+					NavItems:        props.NavItems,
+					Active:          props.Active,
+					ShowMenuTrigger: shellHasNavigation(props),
+					Trailing:        props.HeaderTrailing,
+					ThemeToggle:     props.ThemeToggle,
+				})
+				@ui.Block(ui.BlockProps{Tag: "main", Class: "flex w-full min-w-0 max-w-full flex-1 flex-col"}) {
+					{ children... }
+				}
+				@Footer(props.FooterText)
+			}
+		</body>
+	</html>
+}

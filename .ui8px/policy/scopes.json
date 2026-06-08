@@ -1,0 +1,27 @@
+{
+  "defaultScope": "layout",
+  "scopes": [
+    {
+      "name": "controls",
+      "files": [
+        "**/internal/ui/**",
+        "web/static/css/latty-icons.css",
+        "**/web/static/css/latty-icons.css"
+      ],
+      "spacing": "control"
+    },
+    {
+      "name": "layout",
+      "files": ["**/internal/views/**"],
+      "spacing": "layout"
+    },
+    {
+      "name": "fonts",
+      "files": [
+        "web/static/css/fonts.css",
+        "**/web/static/css/fonts.css"
+      ],
+      "spacing": "control"
+    }
+  ]
+}

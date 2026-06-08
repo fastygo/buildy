@@ -1,0 +1,42 @@
+---
+description: BuildY — internal/ui registry tree, layout vs components vs views
+globs: "**/*"
+alwaysApply: false
+---
+
+# BuildY — UI structure
+
+Minimal app shell with the **full `internal/ui` registry tree** for staging reusable UI.
+On-disk index: **`internal/ui/README.md`** (same `registry:*` labels as FastyGoUI).
+
+```
+internal/ui/
+  layout/       # registry:layout — shell, header, footer, mobile sheet
+  components/   # registry:components — icon, toggles, …
+  blocks/       # registry:blocks — dashboard/, marketing/, docs/ (staging)
+  widgets/      # registry:widgets — UI + behavior (staging)
+  variants/     # registry:variants — wireframe utility maps
+  utils/        # registry:utils — app helpers on templ/utils
+internal/views/
+  *.templ       # route pages (home hero, sample, …)
+  partials/     # shell head assets, header trailing glue
+  models.go     # LayoutData, page structs
+internal/site/
+  feature.go    # routes, locale wiring, static nav
+internal/fixtures/
+  locale/*.json # i18n copy
+```
+
+| Path | Role |
+|------|------|
+| `internal/ui/layout` | App chrome; stays in app after extraction |
+| `internal/ui/components` | Props-only UI; no HTTP or fetch |
+| `internal/ui/blocks/<group>` | Section organisms → future `fastygo/blocks` |
+| `internal/ui/widgets` | Behavior shells → future `fastygo/widgets` |
+| `internal/views` | Compose layout + resolved fixture strings |
+
+**views** receive resolved strings/structs only — no `fixtures.LoadLocale` inside `.templ`.
+
+When adding a page: extend `fixtures.Locale` + every `locale/*.json`, add nav in `site/feature.go`, add `internal/views/<page>.templ`, register route in `site/feature.go`.
+
+For sidebar layout, see git branch **`sidebar`**.

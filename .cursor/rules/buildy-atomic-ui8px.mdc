@@ -1,0 +1,41 @@
+---
+description: BuildY — templ/ui composition, ui8px policy, no raw HTML, no custom CSS classes
+globs: "**/*"
+alwaysApply: false
+---
+
+# BuildY — composition & ui8px
+
+## Stack
+
+- **Primitives:** `github.com/fastygo/templ/ui` — `@ui.Stack`, `@ui.Button`, `@ui.Form`, …
+- **Composites (when needed):** `import cmp "github.com/fastygo/templ/components"`
+- **Helpers:** `github.com/fastygo/templ/utils` — `Cn`, ARIA, tags
+- **App UI:** `internal/ui/layout`, `internal/ui/components`
+- **Pages:** `internal/views` — view models + page bodies only; shell lives in `internal/ui/layout`
+
+Import shape: `import "github.com/fastygo/templ/ui"` — do **not** deep-import `templ/ui/button` etc.
+
+## Tailwind / ui8px
+
+- Utilities must pass **`BuildY/.ui8px/policy`**.
+- After `.templ`, Go `Class` strings, or CSS `@source` edits: **`bun run lint:ui8px`**.
+- **Forbidden:** app-owned semantic CSS as SoT (`ui-*`, `buildy-*`, bespoke component layers in `web/static/css` beyond approved files).
+- **Allowed CSS files:** `input.css`, `tweakcn.css`, `fonts.css`, `latty-icons.css`, built `app.css`.
+- **`latty` / `latty-*`** — icon masks only (`latty-icons.css`).
+
+Prefer **`Button` `Variant` / `Size`** over `Variant: "unstyled"` + long manual utility chains.
+
+## No raw markup
+
+- **Forbidden:** raw layout/content tags in **`internal/ui/**`** (except documented exceptions) and **`internal/views/**`**.
+- **Mandatory:** `github.com/fastygo/templ/ui` (+ `templ/components` when appropriate).
+- **Exception — document shell only:** `<!DOCTYPE>`, `<html>`, `<head>`, `<body>`, `<meta>`, `<title>`, `<link>`, `<script>` in **`internal/ui/layout/shell.templ`** or **`internal/views/partials/shell_head.templ`**.
+- **Exception — latty host:** `internal/ui/components/icon/icon.templ` may use a single empty `<span>` for mask icons.
+
+## Dependencies
+
+- UI markup: **`github.com/fastygo/templ`** only (vendored). No `ui8kit`, no `elements`, no `panel`.
+- Behavior: **`@ui8kit/aria`** via committed `web/static/js/ui8kit.js` + `manifest.json`.
+
+See **`buildy-ui-structure.mdc`**, **`buildy-aria.mdc`**, **`buildy-fixtures-data.mdc`**, **`buildy-validation-testing.mdc`**.

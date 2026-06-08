@@ -1,0 +1,24 @@
+---
+description: BuildY — static ARIA (templ/utils) + @ui8kit/aria client patterns
+globs: "**/*"
+alwaysApply: false
+---
+
+# ARIA (BuildY)
+
+## Static markup
+
+Use **`github.com/fastygo/templ/utils`** ARIA helpers in Go/`helpers.go` (`AriaLabel`, `AriaExpanded`, `AriaControls`, `MergeAttrs`, …) on interactive server-rendered controls (mobile sheet trigger, theme toggle).
+
+## Client behavior
+
+- **`@ui8kit/aria`** pattern: **dialog/sheet** (mobile menu) only, bundled in **`web/static/js/ui8kit.js`** via `scripts/ui8kit-entry.mjs`.
+- Markup contract: `data-ui8kit`, `data-ui8kit-dialog-*` — must match manifest.
+- After changing hooks or JS bundle: **`bun run build:js`** then **`bun run validate:aria`**.
+
+## Shell patterns in this app
+
+- Mobile nav: `#ui8kit-mobile-sheet-panel`, `#ui8kit-mobile-sheet-trigger`
+- Theme: `#ui8kit-theme-toggle`, `#theme-toggle-icon` (updated by `theme.js`)
+
+Add a manifest pattern when introducing a new interactive primitive.

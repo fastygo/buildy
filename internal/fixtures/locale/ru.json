@@ -1,0 +1,23 @@
+{
+  "brand": "BuildY",
+  "footer": "BuildY — прототипирование FastyGo-приложений.",
+  "theme": {
+    "label": "Тема",
+    "switch_to_dark": "Тёмная тема",
+    "switch_to_light": "Светлая тема"
+  },
+  "language_toggle_label": "Язык",
+  "home": {
+    "nav_label": "Главная",
+    "title": "Главная",
+    "welcome": "Добро пожаловать",
+    "welcome_brand": "BuildY",
+    "description": "Создавайте прототипы FastyGo-приложений из запросов, спецификаций, предпросмотра и исходного кода."
+  },
+  "sample": {
+    "nav_label": "Пример",
+    "title": "Пример",
+    "description": "Заглушка для второго пункта меню.",
+    "body": "Замените этот маршрут и тексты своими страницами."
+  }
+}

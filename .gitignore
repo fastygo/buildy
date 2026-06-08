@@ -1,3 +1,13 @@
 .manual/
-.project/
 node_modules/
+bin/
+/tmp/
+*.exe
+.env
+.DS_Store
+vendor/*
+!vendor/github.com/
+vendor/github.com/*
+!vendor/github.com/fastygo/
+vendor/github.com/fastygo/*
+!vendor/github.com/fastygo/**
