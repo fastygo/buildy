@@ -1,0 +1,34 @@
+---
+description: BuildY — Templ-first mockup workspace on Framework + Platform slice
+globs: "**/*"
+alwaysApply: false
+---
+
+# BuildY (workspace)
+
+**Role:** Browser workspace for prompt → plan → model → preview → source → export. Current slice is **fixture-driven UX mockups**, not production integrations.
+
+## Stack
+
+`github.com/fastygo/framework` + `github.com/fastygo/platform` + `github.com/fastygo/templ`
+
+Reference-only UI patterns: `@Blank` — shell, mobile sheet, theme toggle, language switch. **Do not add `@Blank` as a `go.mod` dependency.**
+
+## UI rules
+
+- Render from **BuildY-owned fixtures** — no hardcoded user-facing copy in templates.
+- Compose with `github.com/fastygo/templ` (`ui/`, `components/`, `utils/`).
+- App shell in `internal/ui/`; home and workspace views in `internal/views/`.
+- EN/RU via locale fixtures (`locale/en.json`, `locale/ru.json`).
+- Dark theme, mobile menu, and language switch are mandatory for home mockup work.
+
+## Out of scope (current slice)
+
+- `github.com/fastygo/ui8kit`, `elements`, `blocks` — legacy, do not introduce.
+- Real GitHub App, billing, deploy, live AppCMS sync, sandbox code execution.
+- Showcase app cards (AppCMS, AppCRM, AppSuite, Director, Contentor, Webmaster) as repo imports — presets in fixtures only.
+
+## Plan workflow
+
+Copy-paste implementation chunks: `.project/checklist-plan.md`  
+Progress tracker: `.project/progress-ux-mockup-fixtures.md` — one Plan Chunk at a time.

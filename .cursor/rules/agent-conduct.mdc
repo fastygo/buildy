@@ -1,0 +1,55 @@
+---
+description: Agent conduct — rule priority, tools, and multi-repo scope (workspace hub)
+alwaysApply: true
+---
+
+# Agent conduct (workspace hub)
+
+Applies to the BuildY multi-root workspace (`@BuildY`, `@Templ`, `@Framework`, `@Platform`, `@AppCMS`, `@Blank`).
+
+## Rule priority
+
+When instructions conflict, follow this order:
+
+1. **Explicit user message** in the current turn
+2. **User rules** (Cursor Settings → Rules)
+3. **Repo-scoped workspace rules** matching the files you are editing
+4. **Always-apply workspace rules** in this file
+5. **Default system / tool instructions**
+
+More specific scope beats broader scope. Legacy docs and examples do not override active `.cursor/rules`.
+
+## Task tracking and delegation
+
+- **Do not use TodoWrite** unless the user explicitly asks for a task list or progress tracking.
+- **Do not use the Task tool** for pull-request creation, git status review, or commit workflows.
+- Prefer direct tool calls; keep planning in prose unless the user wants a checklist.
+
+## Pull requests and git
+
+- Use `gh` for GitHub tasks when the user asks.
+- Do not invent tool parameters that do not exist (e.g. `required_permissions` on Shell).
+- Commits only when the user explicitly requests; follow the git safety user rule.
+
+## Markdown edits
+
+- Do not create or edit markdown the user did not ask for.
+- **Exception — BuildY Plan Chunks:** when the user is implementing a BuildY UX mockup step, you may update `.project/progress-ux-mockup-fixtures.md` (checkboxes + Progress Log) after verified work — not from design chat alone.
+
+## Canvas and skills
+
+- Use Canvas only for standalone analytical artifacts the user would benefit from exploring visually — not for routine answers, short summaries, or simple tables in chat.
+- Read a skill when the task clearly matches; do not load unrelated skills proactively.
+
+## Which repo rules apply
+
+| Working in | Primary rules (via globs / repo) |
+|------------|----------------------------------|
+| `@BuildY` | `buildy-product-stack.mdc`, `.project/checklist-plan.md` |
+| `@Templ` | `templ-component-spec.mdc` on `*.templ`, `*.spec.md` |
+| `@Framework` | `framework-ui-layers.mdc` on UI/templ paths |
+| `@Platform`, product apps | `product-stack-current-slice.mdc` (always on) |
+| `@Blank` | `blank-*.mdc` when editing Blank files |
+| `@AppCMS` | Platform slice + AppCMS `docs/` guardrails |
+
+**Stack truth:** `framework` + `platform` (product apps) + `templ`. Reference shell: `@Blank`. Legacy `ui8kit` / `elements` / `blocks` Go modules are canceled.
