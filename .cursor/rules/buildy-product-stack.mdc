@@ -18,13 +18,16 @@ Reference-only UI patterns: `@Blank` — shell, mobile sheet, theme toggle, lang
 
 - Render from **BuildY-owned fixtures** — no hardcoded user-facing copy in templates.
 - Compose with `github.com/fastygo/templ` (`ui/`, `components/`, `utils/`).
-- App shell in `internal/ui/`; home and workspace views in `internal/views/`.
+- Mirror **`@Blank/internal/ui/`** registry tree: `layout/`, `components/`, `blocks/`, `widgets/`, `variants/`, `utils/` — see [`@Blank/internal/ui/README.md`](../../@Blank/internal/ui/README.md).
+- Stage reusable sections in `internal/ui/blocks/<group>/`; promote to `fastygo/blocks` only after freeze — do not `require` blocks/widgets modules during mockup slice.
+- App shell in `internal/ui/layout/`; home and workspace views in `internal/views/`.
 - EN/RU via locale fixtures (`locale/en.json`, `locale/ru.json`).
 - Dark theme, mobile menu, and language switch are mandatory for home mockup work.
 
 ## Out of scope (current slice)
 
-- `github.com/fastygo/ui8kit`, `elements`, `blocks` — legacy, do not introduce.
+- `github.com/fastygo/ui8kit`, `elements` — legacy Go modules, do not introduce.
+- `github.com/fastygo/blocks`, `github.com/fastygo/widgets` as **dependencies** — not until post-mockup extraction; use `internal/ui/blocks/` and `internal/ui/widgets/` staging instead.
 - Real GitHub App, billing, deploy, live AppCMS sync, sandbox code execution.
 - Showcase app cards (AppCMS, AppCRM, AppSuite, Director, Contentor, Webmaster) as repo imports — presets in fixtures only.
 
