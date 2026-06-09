@@ -19,5 +19,19 @@
     "title": "Sample",
     "description": "Placeholder page for a second navigation item.",
     "body": "Replace this route and copy with your own pages."
+  },
+  "header_nav": {
+    "documentation": {
+      "label": "Documentation",
+      "path": "#documentation"
+    },
+    "templates": {
+      "label": "Templates",
+      "path": "#templates"
+    },
+    "settings": {
+      "label": "Settings",
+      "path": "#settings"
+    }
   }
 }

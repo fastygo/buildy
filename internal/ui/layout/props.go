@@ -16,12 +16,19 @@ type NavProps struct {
 	Vertical bool
 }
 
+// SidebarProps configures the desktop sidebar and primary mobile sheet group.
+type SidebarProps struct {
+	Items  []NavItem
+	Active string
+}
+
 // HeaderProps configures the top header bar.
 type HeaderProps struct {
 	BrandName       string
-	NavItems        []NavItem
+	HeaderNavItems  []NavItem
 	Active          string
 	ShowMenuTrigger bool
+	ShowBrand       bool
 	Trailing        templ.Component
 	ThemeToggle     ThemeToggleProps
 }
@@ -33,13 +40,14 @@ type ThemeToggleProps struct {
 	SwitchToLightLabel string
 }
 
-// ShellProps configures the full page shell (header + main + footer).
+// ShellProps configures the full page shell (sidebar + header + main + footer).
 type ShellProps struct {
 	Title          string
 	Lang           string
 	BrandName      string
 	Active         string
-	NavItems       []NavItem
+	SidebarItems   []NavItem
+	HeaderNavItems []NavItem
 	FooterText     string
 	HeadExtra      templ.Component
 	HeaderTrailing templ.Component

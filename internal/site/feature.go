@@ -57,10 +57,18 @@ func (f *Feature) fixtureLocale(ctx context.Context) fixtures.Locale {
 	return loc
 }
 
-func (f *Feature) siteNav(fix fixtures.Locale) []layout.NavItem {
+func (f *Feature) sidebarNav(fix fixtures.Locale) []layout.NavItem {
 	return []layout.NavItem{
 		{Label: fix.Home.NavLabel, Path: "/", Icon: "home"},
 		{Label: fix.Sample.NavLabel, Path: "/sample", Icon: "box"},
+	}
+}
+
+func (f *Feature) headerNav(fix fixtures.Locale) []layout.NavItem {
+	return []layout.NavItem{
+		{Label: fix.HeaderNav.Documentation.Label, Path: fix.HeaderNav.Documentation.Path},
+		{Label: fix.HeaderNav.Templates.Label, Path: fix.HeaderNav.Templates.Path},
+		{Label: fix.HeaderNav.Settings.Label, Path: fix.HeaderNav.Settings.Path},
 	}
 }
 
@@ -96,8 +104,9 @@ func (f *Feature) layoutData(ctx context.Context, r *http.Request, fix fixtures.
 		Lang:       locale.From(ctx),
 		Brand:      fix.Brand,
 		FooterText: fix.Footer,
-		Active:     active,
-		NavItems:   f.siteNav(fix),
+		Active:         active,
+		SidebarItems:   f.sidebarNav(fix),
+		HeaderNavItems: f.headerNav(fix),
 		Assets: views.AssetPaths{
 			CSS:     assetCSS,
 			ThemeJS: assetThemeJS,

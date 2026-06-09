@@ -11,18 +11,25 @@ templ Header(props HeaderProps) {
 		Tag: "header",
 		Class: "grid h-15 shrink-0 grid-cols-[1fr_auto_1fr] items-center gap-2 border-b border-border px-4 max-md:sticky max-md:top-0 max-md:z-40 max-md:backdrop-blur max-md:bg-background/80",
 	}) {
-		@ui.Box(ui.BoxProps{Class: "col-start-1 justify-self-start"}) {
-			@ui.Button(brandLogoButtonProps(props.BrandName)) {
-				{ shellBrand(props.BrandName) }
+		@ui.Group(ui.GroupProps{Class: "col-start-1 flex items-center gap-2 justify-self-start"}) {
+			if props.ShowMenuTrigger {
+				@ui.Button(headerMenuButtonProps()) {
+					@icon.Icon(icon.IconProps{Name: "menu", Size: "sm", Class: "h-4 w-4 shrink-0"})
+				}
+			}
+			if props.ShowBrand {
+				@ui.Button(brandLogoButtonProps(props.BrandName, "text-base font-semibold tracking-tight text-foreground transition-colors hover:text-foreground/80")) {
+					{ shellBrand(props.BrandName) }
+				}
 			}
 		}
-		if len(props.NavItems) > 0 {
+		if len(props.HeaderNavItems) > 0 {
 			@ui.Group(ui.GroupProps{
 				Tag:   "nav",
 				Class: "col-start-2 hidden items-center justify-center gap-1 justify-self-center md:flex",
-				Attrs: templpkg.Attributes{"aria-label": "Main navigation"},
+				Attrs: templpkg.Attributes{"aria-label": "Header navigation"},
 			}) {
-				@Nav(NavProps{Items: props.NavItems, Active: props.Active})
+				@Nav(NavProps{Items: props.HeaderNavItems, Active: props.Active})
 			}
 		}
 		@ui.Group(ui.GroupProps{Class: "col-start-3 flex shrink-0 items-center justify-end gap-2 justify-self-end"}) {
@@ -36,11 +43,6 @@ templ Header(props HeaderProps) {
 					ID:    "theme-toggle-icon",
 					Attrs: templpkg.Attributes{"aria-hidden": "true"},
 				})
-			}
-			if props.ShowMenuTrigger {
-				@ui.Button(headerMenuButtonProps()) {
-					@icon.Icon(icon.IconProps{Name: "menu", Size: "sm", Class: "h-4 w-4 shrink-0"})
-				}
 			}
 		}
 	}

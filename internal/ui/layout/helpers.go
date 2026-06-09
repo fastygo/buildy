@@ -33,7 +33,11 @@ func shellBodyClass(_ ShellProps) string {
 }
 
 func shellHasNavigation(props ShellProps) bool {
-	return len(props.NavItems) > 0
+	return len(props.SidebarItems) > 0 || len(props.HeaderNavItems) > 0
+}
+
+func shellHasSidebar(props ShellProps) bool {
+	return len(props.SidebarItems) > 0
 }
 
 func themeToggleLabel(value string) string {
@@ -72,16 +76,23 @@ func navItemClasses(active, path string, vertical bool) string {
 	return uiutils.Cn(base, "text-muted-foreground hover:text-foreground")
 }
 
-func brandLogoButtonProps(brandName string) ui.ButtonProps {
+func brandLogoButtonProps(brandName, className string) ui.ButtonProps {
 	name := shellBrand(brandName)
 	return ui.ButtonProps{
 		Href:    "/",
 		Variant: "unstyled",
-		Class:   "text-base font-semibold tracking-tight text-foreground transition-colors hover:text-foreground/80",
+		Class:   uiutils.Cn(className, "text-foreground"),
 		Attrs: uiutils.MergeAttrs(
 			templ.Attributes{"aria-label": name + " home"},
 		),
 	}
+}
+
+func mobileSheetSecondaryGroupClass(hasPrimaryGroup bool) string {
+	if !hasPrimaryGroup {
+		return ""
+	}
+	return "mt-4 border-t border-border pt-4"
 }
 
 func headerMenuButtonProps() ui.ButtonProps {
@@ -166,15 +177,24 @@ func mobileSheetCloseButtonProps() ui.ButtonProps {
 	}
 }
 
+func navLinkLabelClass(_ bool) string {
+	return "min-w-0"
+}
+
 func navLinkButtonProps(active string, item NavItem, vertical bool) ui.ButtonProps {
 	attrs := templ.Attributes{}
 	if active == item.Path {
 		attrs = uiutils.MergeAttrs(attrs, uiutils.AriaCurrent("page"))
 	}
+	ariaLabel := ""
+	if vertical && item.Icon != "" {
+		ariaLabel = item.Label
+	}
 	return ui.ButtonProps{
-		Href:    item.Path,
-		Variant: "unstyled",
-		Class:   navItemClasses(active, item.Path, vertical),
-		Attrs:   attrs,
+		Href:      item.Path,
+		Variant:   "unstyled",
+		Class:     navItemClasses(active, item.Path, vertical),
+		AriaLabel: ariaLabel,
+		Attrs:     attrs,
 	}
 }

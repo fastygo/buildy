@@ -32,6 +32,20 @@ type Locale struct {
 		Description string `json:"description"`
 		Body        string `json:"body"`
 	} `json:"sample"`
+	HeaderNav struct {
+		Documentation struct {
+			Label string `json:"label"`
+			Path  string `json:"path"`
+		} `json:"documentation"`
+		Templates struct {
+			Label string `json:"label"`
+			Path  string `json:"path"`
+		} `json:"templates"`
+		Settings struct {
+			Label string `json:"label"`
+			Path  string `json:"path"`
+		} `json:"settings"`
+	} `json:"header_nav"`
 }
 
 // LoadLocale reads locale/{code}.json (e.g. en, ru).

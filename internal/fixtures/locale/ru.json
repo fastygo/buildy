@@ -19,5 +19,19 @@
     "title": "Пример",
     "description": "Заглушка для второго пункта меню.",
     "body": "Замените этот маршрут и тексты своими страницами."
+  },
+  "header_nav": {
+    "documentation": {
+      "label": "Документация",
+      "path": "#documentation"
+    },
+    "templates": {
+      "label": "Шаблоны",
+      "path": "#templates"
+    },
+    "settings": {
+      "label": "Настройки",
+      "path": "#settings"
+    }
   }
 }

@@ -19,7 +19,8 @@ type LayoutData struct {
 	Brand          string
 	FooterText     string
 	Active         string
-	NavItems       []layout.NavItem
+	SidebarItems   []layout.NavItem
+	HeaderNavItems []layout.NavItem
 	Assets         AssetPaths
 	Theme          layout.ThemeToggleProps
 	LanguageSwitch toggles.LanguageSwitchProps

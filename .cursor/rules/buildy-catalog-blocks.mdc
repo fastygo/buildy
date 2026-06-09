@@ -1,0 +1,106 @@
+---
+description: BuildY — isolated Catalog blocks for future shadcn-style registry
+globs: "internal/ui/blocks/**"
+alwaysApply: false
+---
+
+# BuildY — Catalog Blocks
+
+Use this rule only when the user asks to add or refine a **Catalog** block or
+component under `internal/ui/blocks/`.
+
+Catalog work is separate from the BuildY runtime app. Runtime screens continue
+to render through `internal/ui/layout`, `internal/views`, `internal/site`, and
+`internal/fixtures`. Catalog packages are isolated shadcn-like examples that may
+duplicate runtime layout ideas such as sidebars, headers, cards, or page shells.
+
+## Purpose
+
+Catalog blocks are accumulated in BuildY first. Later, after enough stable
+examples exist, selected packages may move to the shared UI registry. Do not
+design for CLI/CDN registry automation yet.
+
+## Isolation Contract
+
+A Catalog block must be copyable as a folder into `@Templ/examples` and work with
+the simple preview server there.
+
+The copied block must not depend on:
+
+- BuildY `internal/views`;
+- BuildY `internal/site`;
+- BuildY `internal/fixtures`;
+- BuildY runtime `internal/ui/layout`;
+- product routes, handlers, storage, or generated app state.
+
+Allowed dependencies:
+
+- `github.com/fastygo/templ/ui`;
+- `github.com/fastygo/templ/components`;
+- `github.com/fastygo/templ/utils`;
+- files inside the same Catalog block folder;
+- small local helpers included in the copied block folder.
+
+## Package Shape
+
+Prefer a self-contained folder:
+
+```text
+internal/ui/blocks/<group>/<block>/
+  page.templ          # complete preview/page scaffold when needed
+  props.go            # public props and small value types
+  defaults.go         # English default data
+  components/         # block-private nested components
+  <block>.spec.md     # optional LLM/registry contract
+  *_test.go           # optional render smoke test
+```
+
+Use page-level blocks when the example is a full shadcn-like screen. Nested
+components may duplicate runtime pieces such as sidebars or headers because they
+belong to the portable Catalog example, not to the BuildY app shell.
+
+## Data Rules
+
+- Defaults must live in the block folder, either in Go files or adjacent data
+  files copied with the block.
+- Default copy is always English.
+- Do not read app locale JSON or BuildY fixtures from Catalog code.
+- Keep blocks dumb: props in, markup out. No fetch, no database, no route logic.
+
+## ARIA And Interaction Markup
+
+Catalog blocks must prepare static ARIA and `data-ui8kit-*` attributes when they
+include interactive surfaces such as mobile sheets, dialogs, dropdowns, tabs, or
+accordions.
+
+- The block owns the markup contract: trigger, panel, close controls, overlay,
+  `aria-label`, `aria-labelledby`, `aria-controls`, `aria-expanded`, and
+  `data-ui8kit-*` hooks.
+- The host app or examples server owns the JavaScript bundle that registers the
+  matching `@ui8kit/aria` pattern.
+- Do not add custom JavaScript to Catalog blocks.
+- Keep interaction IDs local to the block folder to avoid collisions when
+  multiple Catalog blocks are rendered on the same examples page.
+
+## Verification
+
+Before considering a Catalog block complete, it should be possible to copy its
+folder into `@Templ/examples`, import it from the demo page, and run:
+
+```bash
+cd @Templ/examples
+bun run dev
+```
+
+The block should compile and render with the example server using only its copied
+files plus `github.com/fastygo/templ`.
+
+## Boundaries
+
+- Do not wire Catalog blocks into BuildY runtime views unless the user explicitly
+  asks for a prototype experiment.
+- Do not update BuildY product fixtures just to support Catalog defaults.
+- Do not introduce registry manifests, CDN publishing, or CLI commands in this
+  phase.
+- Keep names and folders registry-friendly, but prioritize local copyability and
+  clean contracts over automation.

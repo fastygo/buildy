@@ -17,8 +17,11 @@ func TestSiteShell_homeRenders(t *testing.T) {
 		Brand:      "FastyGo",
 		FooterText: "Made with 🤍 in FastyGo",
 		Active:     "/",
-		NavItems: []layout.NavItem{
+		SidebarItems: []layout.NavItem{
 			{Label: "Home", Path: "/", Icon: "home"},
+		},
+		HeaderNavItems: []layout.NavItem{
+			{Label: "Documentation", Path: "#documentation"},
 		},
 		Assets: AssetPaths{
 			CSS:     "/static/css/app.css",
@@ -47,8 +50,14 @@ func TestSiteShell_homeRenders(t *testing.T) {
 	if !strings.Contains(strings.ToLower(html), "<!doctype html>") {
 		t.Fatal("expected full document with doctype")
 	}
-	if strings.Contains(html, "<aside") {
-		t.Fatal("expected no sidebar aside")
+	if !strings.Contains(html, "<aside") {
+		t.Fatal("expected desktop sidebar aside")
+	}
+	if !strings.Contains(html, `aria-label="Primary navigation"`) {
+		t.Fatal("expected sidebar navigation group")
+	}
+	if !strings.Contains(html, `aria-label="Header navigation"`) {
+		t.Fatal("expected header navigation group")
 	}
 	if !strings.Contains(html, `data-ui8kit="sheet"`) {
 		t.Fatal("expected shell mobile sheet markup")

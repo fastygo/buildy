@@ -30,26 +30,58 @@ templ Shell(props ShellProps) {
 							}
 						}
 						@ui.Box(ui.BoxProps{Class: "mt-4"}) {
-							@ui.Stack(ui.StackProps{Tag: "nav", Class: "w-full gap-1 p-2"}) {
-								@Nav(NavProps{Items: props.NavItems, Active: props.Active, Vertical: true})
+							if len(props.SidebarItems) > 0 {
+								@ui.Stack(ui.StackProps{
+									Tag:   "nav",
+									Class: "w-full gap-1 p-2",
+									Attrs: templpkg.Attributes{"aria-label": "Primary navigation"},
+								}) {
+									@Sidebar(SidebarProps{Items: props.SidebarItems, Active: props.Active})
+								}
+							}
+							if len(props.HeaderNavItems) > 0 {
+								@ui.Box(ui.BoxProps{Class: mobileSheetSecondaryGroupClass(len(props.SidebarItems) > 0)}) {
+									@ui.Stack(ui.StackProps{
+										Tag:   "nav",
+										Class: "w-full gap-1 p-2",
+										Attrs: templpkg.Attributes{"aria-label": "Header navigation"},
+									}) {
+										@Nav(NavProps{Items: props.HeaderNavItems, Active: props.Active, Vertical: true})
+									}
+								}
 							}
 						}
 					}
 				}
 			}
-			@ui.Box(ui.BoxProps{Class: "flex min-h-screen w-full flex-col"}) {
-				@Header(HeaderProps{
-					BrandName:       props.BrandName,
-					NavItems:        props.NavItems,
-					Active:          props.Active,
-					ShowMenuTrigger: shellHasNavigation(props),
-					Trailing:        props.HeaderTrailing,
-					ThemeToggle:     props.ThemeToggle,
-				})
-				@ui.Block(ui.BlockProps{Tag: "main", Class: "flex w-full min-w-0 max-w-full flex-1 flex-col"}) {
-					{ children... }
+			@ui.Group(ui.GroupProps{Class: "flex min-h-screen w-full"}) {
+				if shellHasSidebar(props) {
+					@ui.Block(ui.BlockProps{Tag: "aside", Class: "hidden border-r border-border bg-card md:block md:w-64"}) {
+						@ui.Box(ui.BoxProps{Class: "flex h-15 items-center border-b border-border px-4"}) {
+							@ui.Button(brandLogoButtonProps(props.BrandName, "text-base font-semibold tracking-tight text-foreground transition-colors hover:text-foreground/80")) {
+								{ shellBrand(props.BrandName) }
+							}
+						}
+						@ui.Stack(ui.StackProps{Tag: "nav", Class: "w-full gap-1 p-2", Attrs: templpkg.Attributes{"aria-label": "Primary navigation"}}) {
+							@Sidebar(SidebarProps{Items: props.SidebarItems, Active: props.Active})
+						}
+					}
 				}
-				@Footer(props.FooterText)
+				@ui.Box(ui.BoxProps{Class: "flex min-w-0 flex-1 flex-col"}) {
+					@Header(HeaderProps{
+						BrandName:       props.BrandName,
+						HeaderNavItems:  props.HeaderNavItems,
+						Active:          props.Active,
+						ShowMenuTrigger: shellHasNavigation(props),
+						ShowBrand:       !shellHasSidebar(props),
+						Trailing:        props.HeaderTrailing,
+						ThemeToggle:     props.ThemeToggle,
+					})
+					@ui.Block(ui.BlockProps{Tag: "main", Class: "flex w-full min-w-0 max-w-full flex-1 flex-col"}) {
+						{ children... }
+					}
+					@Footer(props.FooterText)
+				}
 			}
 		</body>
 	</html>

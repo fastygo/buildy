@@ -87,7 +87,7 @@ func navLink(active string, item NavItem, vertical bool) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = ui.Text(ui.TextProps{Tag: "span", Class: navLinkLabelClass(vertical)}, item.Label).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -16,6 +16,6 @@ templ navLink(active string, item NavItem, vertical bool) {
 		if vertical && item.Icon != "" {
 			@icon.Icon(icon.IconProps{Name: item.Icon, Size: "sm"})
 		}
-		@ui.Text(ui.TextProps{Tag: "span", Class: "min-w-0"}, item.Label)
+		@ui.Text(ui.TextProps{Tag: "span", Class: navLinkLabelClass(vertical)}, item.Label)
 	}
 }
