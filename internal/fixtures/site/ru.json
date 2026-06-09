@@ -1,0 +1,36 @@
+{
+  "brand": "BuildY",
+  "footer": "BuildY — прототипирование FastyGo-приложений.",
+  "theme": {
+    "label": "Тема",
+    "switch_to_dark": "Тёмная тема",
+    "switch_to_light": "Светлая тема"
+  },
+  "language_toggle_label": "Язык",
+  "sidebar_nav": [
+    {
+      "label": "Главная",
+      "path": "/",
+      "icon": "home"
+    },
+    {
+      "label": "Пример",
+      "path": "/sample",
+      "icon": "box"
+    }
+  ],
+  "header_nav": [
+    {
+      "label": "Документация",
+      "path": "#documentation"
+    },
+    {
+      "label": "Шаблоны",
+      "path": "#templates"
+    },
+    {
+      "label": "Настройки",
+      "path": "#settings"
+    }
+  ]
+}

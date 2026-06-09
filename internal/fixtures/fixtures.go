@@ -6,57 +6,80 @@ import (
 	"fmt"
 )
 
-//go:embed locale/*.json
+//go:embed site/*.json screens/*.json
 var localeFS embed.FS
 
-// Locale holds embedded copy for one language.
-type Locale struct {
-	Brand               string `json:"brand"`
-	Footer              string `json:"footer"`
-	Theme               struct {
-		Label             string `json:"label"`
-		SwitchToDarkLabel string `json:"switch_to_dark"`
-		SwitchToLight     string `json:"switch_to_light"`
-	} `json:"theme"`
-	LanguageToggleLabel string `json:"language_toggle_label"`
-	Home                struct {
-		NavLabel     string `json:"nav_label"`
-		Title        string `json:"title"`
-		Welcome      string `json:"welcome"`
-		WelcomeBrand string `json:"welcome_brand"`
-		Description  string `json:"description"`
-	} `json:"home"`
-	Sample struct {
-		NavLabel    string `json:"nav_label"`
-		Title       string `json:"title"`
-		Description string `json:"description"`
-		Body        string `json:"body"`
-	} `json:"sample"`
-	HeaderNav struct {
-		Documentation struct {
-			Label string `json:"label"`
-			Path  string `json:"path"`
-		} `json:"documentation"`
-		Templates struct {
-			Label string `json:"label"`
-			Path  string `json:"path"`
-		} `json:"templates"`
-		Settings struct {
-			Label string `json:"label"`
-			Path  string `json:"path"`
-		} `json:"settings"`
-	} `json:"header_nav"`
+// SiteLocale holds embedded copy for app chrome in one language.
+type SiteLocale struct {
+	Brand               string      `json:"brand"`
+	Footer              string      `json:"footer"`
+	Theme               ThemeLocale `json:"theme"`
+	LanguageToggleLabel string      `json:"language_toggle_label"`
+	SidebarNav          []NavLocale `json:"sidebar_nav"`
+	HeaderNav           []NavLocale `json:"header_nav"`
 }
 
-// LoadLocale reads locale/{code}.json (e.g. en, ru).
-func LoadLocale(code string) (Locale, error) {
-	raw, err := localeFS.ReadFile("locale/" + code + ".json")
-	if err != nil {
-		return Locale{}, fmt.Errorf("fixtures: read locale %q: %w", code, err)
-	}
-	var out Locale
-	if err := json.Unmarshal(raw, &out); err != nil {
-		return Locale{}, fmt.Errorf("fixtures: parse locale %q: %w", code, err)
+type ThemeLocale struct {
+	Label             string `json:"label"`
+	SwitchToDarkLabel string `json:"switch_to_dark"`
+	SwitchToLight     string `json:"switch_to_light"`
+}
+
+type NavLocale struct {
+	Label string `json:"label"`
+	Path  string `json:"path"`
+	Icon  string `json:"icon,omitempty"`
+}
+
+type HomeScreenLocale struct {
+	NavLabel     string `json:"nav_label"`
+	Title        string `json:"title"`
+	Welcome      string `json:"welcome"`
+	WelcomeBrand string `json:"welcome_brand"`
+	Description  string `json:"description"`
+}
+
+type SampleScreenLocale struct {
+	NavLabel    string `json:"nav_label"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Body        string `json:"body"`
+}
+
+// LoadSiteLocale reads site/{code}.json (e.g. en, ru).
+func LoadSiteLocale(code string) (SiteLocale, error) {
+	var out SiteLocale
+	if err := readLocaleJSON("site/"+code+".json", &out); err != nil {
+		return SiteLocale{}, err
 	}
 	return out, nil
+}
+
+// LoadHomeScreen reads screens/home.{code}.json.
+func LoadHomeScreen(code string) (HomeScreenLocale, error) {
+	var out HomeScreenLocale
+	if err := readLocaleJSON("screens/home."+code+".json", &out); err != nil {
+		return HomeScreenLocale{}, err
+	}
+	return out, nil
+}
+
+// LoadSampleScreen reads screens/sample.{code}.json.
+func LoadSampleScreen(code string) (SampleScreenLocale, error) {
+	var out SampleScreenLocale
+	if err := readLocaleJSON("screens/sample."+code+".json", &out); err != nil {
+		return SampleScreenLocale{}, err
+	}
+	return out, nil
+}
+
+func readLocaleJSON(path string, out any) error {
+	raw, err := localeFS.ReadFile(path)
+	if err != nil {
+		return fmt.Errorf("fixtures: read %q: %w", path, err)
+	}
+	if err := json.Unmarshal(raw, out); err != nil {
+		return fmt.Errorf("fixtures: parse %q: %w", path, err)
+	}
+	return nil
 }

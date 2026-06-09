@@ -79,7 +79,7 @@ type CMSSetting struct {
 	Public bool   `json:"public"`
 }
 
-// LoadCMSSiteSeed reads cms/{name}.json (for example, buildy-minimal-site.json).
+// LoadCMSSiteSeed reads cms/{name}.json (for example, buildy-minimal-site.en.json).
 func LoadCMSSiteSeed(name string) (CMSSiteSeed, error) {
 	raw, err := cmsFS.ReadFile("cms/" + name)
 	if err != nil {

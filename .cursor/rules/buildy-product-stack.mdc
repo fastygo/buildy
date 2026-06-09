@@ -21,7 +21,7 @@ BuildY owns its starter UI shell, seeded from Blank patterns. **Do not add `@Bla
 - Use BuildY's **`internal/ui/`** registry tree: `layout/`, `components/`, `blocks/`, `widgets/`, `variants/`, `utils/` — see `internal/ui/README.md`.
 - Stage reusable sections in `internal/ui/blocks/<group>/`; promote to `fastygo/blocks` only after freeze — do not `require` blocks/widgets modules during mockup slice.
 - App shell in `internal/ui/layout/`; home and workspace views in `internal/views/`.
-- EN/RU via locale fixtures (`locale/en.json`, `locale/ru.json`).
+- EN/RU via split fixtures (`site/*.json`, `screens/*.json`, `cms/*.json`).
 - Dark theme, mobile menu, and language switch are mandatory for home mockup work.
 
 ## Out of scope (current slice)

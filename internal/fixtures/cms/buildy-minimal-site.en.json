@@ -1,0 +1,136 @@
+{
+  "codex_version": "codex.v1",
+  "site": {
+    "title": "BuildY",
+    "description": "Prototype FastyGo applications from prompts, specs, previews, and generated source.",
+    "locale": "en"
+  },
+  "content_types": [
+    {
+      "id": "post",
+      "label": "Post",
+      "permalink_pattern": "/posts/{slug}",
+      "public": true,
+      "supports": {
+        "title": true,
+        "editor": true,
+        "excerpt": true,
+        "featured_media": true
+      }
+    },
+    {
+      "id": "page",
+      "label": "Page",
+      "permalink_pattern": "/{slug}",
+      "public": true,
+      "supports": {
+        "title": true,
+        "editor": true,
+        "excerpt": false,
+        "featured_media": true
+      }
+    }
+  ],
+  "content_entries": [
+    {
+      "id": "home",
+      "kind": "page",
+      "title": { "en": "Home" },
+      "slug": "home",
+      "content": "Prototype FastyGo applications from prompts, specs, previews, and generated source.",
+      "excerpt": "",
+      "status": "published",
+      "visibility": "public",
+      "author_id": "buildy-system",
+      "featured_media_id": "",
+      "term_ids": [],
+      "metadata": {
+        "screen": "home",
+        "source": "buildy-fixture"
+      },
+      "published_at": "2024-01-15T12:00:00Z",
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    },
+    {
+      "id": "sample",
+      "kind": "page",
+      "title": { "en": "Sample" },
+      "slug": "sample",
+      "content": "Replace this route and copy with your own pages.",
+      "excerpt": "Placeholder page for a second navigation item.",
+      "status": "published",
+      "visibility": "public",
+      "author_id": "buildy-system",
+      "featured_media_id": "",
+      "term_ids": [],
+      "metadata": {
+        "screen": "sample",
+        "source": "buildy-fixture"
+      },
+      "published_at": "2024-01-15T12:00:00Z",
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    },
+    {
+      "id": "prototype-workspace",
+      "kind": "post",
+      "title": { "en": "Prototype workspace" },
+      "slug": "prototype-workspace",
+      "content": "BuildY turns plain-language intent into specs, AppCMS-compatible content, previews, and generated Go/Templ source.",
+      "excerpt": "Plain-language intent becomes structured product data.",
+      "status": "published",
+      "visibility": "public",
+      "author_id": "buildy-system",
+      "featured_media_id": "",
+      "term_ids": [],
+      "metadata": {
+        "topic": "codex",
+        "source": "buildy-fixture"
+      },
+      "published_at": "2024-01-15T12:00:00Z",
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    }
+  ],
+  "menus": [
+    {
+      "id": "primary",
+      "location": "primary",
+      "items": [
+        {
+          "id": "home",
+          "label": "Home",
+          "url": "/",
+          "parent_id": ""
+        },
+        {
+          "id": "sample",
+          "label": "Sample",
+          "url": "/sample",
+          "parent_id": ""
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "key": "site.title",
+      "group": "site",
+      "value": "BuildY",
+      "public": true
+    },
+    {
+      "key": "site.description",
+      "group": "site",
+      "value": "Prototype FastyGo applications from prompts, specs, previews, and generated source.",
+      "public": true
+    },
+    {
+      "key": "theme.active",
+      "group": "theme",
+      "value": "buildy-default",
+      "public": true
+    }
+  ]
+}

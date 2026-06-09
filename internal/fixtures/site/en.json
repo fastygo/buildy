@@ -1,0 +1,36 @@
+{
+  "brand": "BuildY",
+  "footer": "BuildY prototype workspace for FastyGo apps.",
+  "theme": {
+    "label": "Theme",
+    "switch_to_dark": "Switch to dark",
+    "switch_to_light": "Switch to light"
+  },
+  "language_toggle_label": "Language",
+  "sidebar_nav": [
+    {
+      "label": "Home",
+      "path": "/",
+      "icon": "home"
+    },
+    {
+      "label": "Sample",
+      "path": "/sample",
+      "icon": "box"
+    }
+  ],
+  "header_nav": [
+    {
+      "label": "Documentation",
+      "path": "#documentation"
+    },
+    {
+      "label": "Templates",
+      "path": "#templates"
+    },
+    {
+      "label": "Settings",
+      "path": "#settings"
+    }
+  ]
+}

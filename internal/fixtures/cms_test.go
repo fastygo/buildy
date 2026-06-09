@@ -13,7 +13,7 @@ import (
 )
 
 func TestLoadCMSSiteSeed(t *testing.T) {
-	seed, err := LoadCMSSiteSeed("buildy-minimal-site.json")
+	seed, err := LoadCMSSiteSeed("buildy-minimal-site.en.json")
 	if err != nil {
 		t.Fatalf("load cms site seed: %v", err)
 	}
@@ -25,6 +25,55 @@ func TestLoadCMSSiteSeed(t *testing.T) {
 	}
 	if len(seed.ContentTypes) == 0 || len(seed.ContentEntries) == 0 || len(seed.Menus) == 0 {
 		t.Fatalf("cms seed must include content types, entries, and menus: %#v", seed)
+	}
+}
+
+func TestCMSFixturesHaveSemanticIntegrity(t *testing.T) {
+	files, err := filepath.Glob(filepath.Join("cms", "*.json"))
+	if err != nil {
+		t.Fatalf("glob cms fixtures: %v", err)
+	}
+	if len(files) == 0 {
+		t.Fatal("expected cms fixtures")
+	}
+	for _, file := range files {
+		t.Run(file, func(t *testing.T) {
+			seed, err := LoadCMSSiteSeed(filepath.Base(file))
+			if err != nil {
+				t.Fatalf("load seed: %v", err)
+			}
+			seenContentTypes := map[string]bool{}
+			for _, item := range seed.ContentTypes {
+				requireUnique(t, seenContentTypes, item.ID, "content type id")
+			}
+			seenEntries := map[string]bool{}
+			entrySlugs := map[string]bool{}
+			for _, item := range seed.ContentEntries {
+				requireUnique(t, seenEntries, item.ID, "content entry id")
+				if !seenContentTypes[item.Kind] {
+					t.Fatalf("content entry %q references missing kind/content type %q", item.ID, item.Kind)
+				}
+				if item.Slug != "" {
+					entrySlugs[item.Slug] = true
+				}
+			}
+			for _, menu := range seed.Menus {
+				seenItems := map[string]bool{}
+				for _, item := range menu.Items {
+					requireUnique(t, seenItems, item.ID, "menu item id")
+					if strings.HasPrefix(item.URL, "/") && item.URL != "/" {
+						slug := strings.TrimPrefix(item.URL, "/")
+						if !entrySlugs[slug] {
+							t.Fatalf("menu item %q points to missing page slug %q", item.ID, slug)
+						}
+					}
+				}
+			}
+			seenSettings := map[string]bool{}
+			for _, item := range seed.Settings {
+				requireUnique(t, seenSettings, item.Key, "setting key")
+			}
+		})
 	}
 }
 
@@ -104,4 +153,15 @@ func registerCodexSchemaDir(compiler *jsonschema.Compiler, dir string) error {
 
 func codexSchemaURL(name string) string {
 	return fmt.Sprintf("https://fastygo.dev/schema/codex/v1/%s", name)
+}
+
+func requireUnique(t *testing.T, seen map[string]bool, value string, label string) {
+	t.Helper()
+	if value == "" {
+		t.Fatalf("%s is required", label)
+	}
+	if seen[value] {
+		t.Fatalf("duplicate %s %q", label, value)
+	}
+	seen[value] = true
 }

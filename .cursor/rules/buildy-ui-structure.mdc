@@ -24,7 +24,9 @@ internal/views/
 internal/site/
   feature.go    # routes, locale wiring, static nav
 internal/fixtures/
-  locale/*.json # i18n copy
+  site/*.json    # app chrome i18n copy
+  screens/*.json # route i18n copy
+  cms/*.json     # AppCMS codex seed bundles
 ```
 
 | Path | Role |
@@ -35,8 +37,8 @@ internal/fixtures/
 | `internal/ui/widgets` | Behavior shells → future `fastygo/widgets` |
 | `internal/views` | Compose layout + resolved fixture strings |
 
-**views** receive resolved strings/structs only — no `fixtures.LoadLocale` inside `.templ`.
+**views** receive resolved strings/structs only — no fixture loaders inside `.templ`.
 
-When adding a page: extend `fixtures.Locale` + every `locale/*.json`, add nav in `site/feature.go`, add `internal/views/<page>.templ`, register route in `site/feature.go`.
+When adding a page: add or extend the typed screen fixture, every supported `screens/<page>.<locale>.json`, provider mapping in `internal/site`, `internal/views/<page>.templ`, and the route in `site/feature.go`.
 
 For sidebar layout, see git branch **`sidebar`**.
