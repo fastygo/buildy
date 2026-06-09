@@ -38,6 +38,7 @@ func (p *fixtureProvider) Layout(ctx context.Context, r *http.Request, code stri
 			CSS:     assetCSS,
 			ThemeJS: assetThemeJS,
 			AppJS:   assetAppJS,
+			ChatJS:  assetChatJS,
 		},
 		Theme: layout.ThemeToggleProps{
 			Label:              site.Theme.Label,
@@ -54,6 +55,51 @@ func (p *fixtureProvider) Home(code string) views.HomeData {
 		Welcome:      screen.Welcome,
 		WelcomeBrand: screen.WelcomeBrand,
 		Description:  screen.Description,
+		Workspace: views.HomeWorkspace{
+			Label:          screen.Workspace.Label,
+			PrototypeMode:  screen.Workspace.PrototypeMode,
+			ProfileName:    screen.Workspace.ProfileName,
+			ProfileInitial: screen.Workspace.ProfileInitial,
+		},
+		Hero: views.HomeHero{
+			Title:             screen.Hero.Title,
+			Subtitle:          screen.Hero.Subtitle,
+			PromptPlaceholder: screen.Hero.PromptPlaceholder,
+			PrimaryAction:     screen.Hero.PrimaryAction,
+			HelperText:        screen.Hero.HelperText,
+			AttachmentLabel:   screen.Hero.AttachmentLabel,
+			AssistantLabel:    screen.Hero.AssistantLabel,
+			ShortcutLabel:     screen.Hero.ShortcutLabel,
+			KeyboardHint:      screen.Hero.KeyboardHint,
+		},
+		Suggestions: homeSuggestions(screen.Suggestions),
+		Workflow:    homeWorkflow(screen.Workflow),
+		Tools:       homeTools(screen.Tools),
+		Showcase: views.HomeShowcase{
+			Title:       screen.Showcase.Title,
+			Description: screen.Showcase.Description,
+			ActionLabel: screen.Showcase.ActionLabel,
+			Items:       homeShowcaseItems(screen.Showcase.Items),
+		},
+		Notice: views.HomeNotice{
+			Title:       screen.Notice.Title,
+			Description: screen.Notice.Description,
+			ActionLabel: screen.Notice.ActionLabel,
+		},
+		Aria: views.HomeAccessibility{
+			PageLabel:        screen.Aria.PageLabel,
+			ChatFormLabel:    screen.Aria.ChatFormLabel,
+			ComposerLabel:    screen.Aria.ComposerLabel,
+			SendLabel:        screen.Aria.SendLabel,
+			AttachmentLabel:  screen.Aria.AttachmentLabel,
+			AssistantLabel:   screen.Aria.AssistantLabel,
+			ShortcutLabel:    screen.Aria.ShortcutLabel,
+			SuggestionsLabel: screen.Aria.SuggestionsLabel,
+			WorkflowLabel:    screen.Aria.WorkflowLabel,
+			ToolsLabel:       screen.Aria.ToolsLabel,
+			ShowcaseLabel:    screen.Aria.ShowcaseLabel,
+			NoticeLabel:      screen.Aria.NoticeLabel,
+		},
 	}
 }
 
@@ -142,6 +188,60 @@ func navItems(items []fixtures.NavLocale) []layout.NavItem {
 			Label: item.Label,
 			Path:  item.Path,
 			Icon:  item.Icon,
+		})
+	}
+	return out
+}
+
+func homeSuggestions(items []fixtures.HomeSuggestionLocale) []views.HomeSuggestion {
+	out := make([]views.HomeSuggestion, 0, len(items))
+	for _, item := range items {
+		out = append(out, views.HomeSuggestion{
+			Label: item.Label,
+			Icon:  item.Icon,
+		})
+	}
+	return out
+}
+
+func homeWorkflow(items []fixtures.HomeWorkflowStepLocale) []views.HomeWorkflowStep {
+	out := make([]views.HomeWorkflowStep, 0, len(items))
+	for _, item := range items {
+		out = append(out, views.HomeWorkflowStep{
+			Label:       item.Label,
+			Description: item.Description,
+			Icon:        item.Icon,
+			Tone:        item.Tone,
+		})
+	}
+	return out
+}
+
+func homeTools(items []fixtures.HomeToolCardLocale) []views.HomeToolCard {
+	out := make([]views.HomeToolCard, 0, len(items))
+	for _, item := range items {
+		out = append(out, views.HomeToolCard{
+			Title:       item.Title,
+			Description: item.Description,
+			Icon:        item.Icon,
+			Tone:        item.Tone,
+		})
+	}
+	return out
+}
+
+func homeShowcaseItems(items []fixtures.HomeShowcaseItemLocale) []views.HomeShowcaseItem {
+	out := make([]views.HomeShowcaseItem, 0, len(items))
+	for _, item := range items {
+		out = append(out, views.HomeShowcaseItem{
+			Name:         item.Name,
+			Category:     item.Category,
+			Description:  item.Description,
+			PreviewNote:  item.PreviewNote,
+			Capabilities: append([]string(nil), item.Capabilities...),
+			UseLabel:     item.UseLabel,
+			PreviewLabel: item.PreviewLabel,
+			Tone:         item.Tone,
 		})
 	}
 	return out

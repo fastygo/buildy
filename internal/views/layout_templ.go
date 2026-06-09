@@ -61,7 +61,7 @@ func SiteShell(d LayoutData, body templpkg.Component) templ.Component {
 			SidebarItems:   d.SidebarItems,
 			HeaderNavItems: d.HeaderNavItems,
 			FooterText:     d.FooterText,
-			HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS),
+			HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS, d.Assets.ChatJS),
 			HeaderTrailing: partials.HeaderTrailing(d.LanguageSwitch),
 			ThemeToggle:    d.Theme,
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)

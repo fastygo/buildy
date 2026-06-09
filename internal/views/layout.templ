@@ -15,7 +15,7 @@ templ SiteShell(d LayoutData, body templpkg.Component) {
 		SidebarItems:   d.SidebarItems,
 		HeaderNavItems: d.HeaderNavItems,
 		FooterText:     d.FooterText,
-		HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS),
+		HeadExtra:      partials.ShellHead(d.Assets.CSS, d.Assets.ThemeJS, d.Assets.AppJS, d.Assets.ChatJS),
 		HeaderTrailing: partials.HeaderTrailing(d.LanguageSwitch),
 		ThemeToggle:      d.Theme,
 	}) {

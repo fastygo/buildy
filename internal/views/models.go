@@ -10,6 +10,7 @@ type AssetPaths struct {
 	CSS     string
 	ThemeJS string
 	AppJS   string
+	ChatJS  string
 }
 
 // LayoutData drives the app shell (header, main, footer).
@@ -44,6 +45,91 @@ type HomeData struct {
 	Welcome      string
 	WelcomeBrand string
 	Description  string
+	Workspace    HomeWorkspace
+	Hero         HomeHero
+	Suggestions  []HomeSuggestion
+	Workflow     []HomeWorkflowStep
+	Tools        []HomeToolCard
+	Showcase     HomeShowcase
+	Notice       HomeNotice
+	Aria         HomeAccessibility
+}
+
+type HomeWorkspace struct {
+	Label          string
+	PrototypeMode  string
+	ProfileName    string
+	ProfileInitial string
+}
+
+type HomeHero struct {
+	Title             string
+	Subtitle          string
+	PromptPlaceholder string
+	PrimaryAction     string
+	HelperText        string
+	AttachmentLabel   string
+	AssistantLabel    string
+	ShortcutLabel     string
+	KeyboardHint      string
+}
+
+type HomeSuggestion struct {
+	Label string
+	Icon  string
+}
+
+type HomeWorkflowStep struct {
+	Label       string
+	Description string
+	Icon        string
+	Tone        string
+}
+
+type HomeToolCard struct {
+	Title       string
+	Description string
+	Icon        string
+	Tone        string
+}
+
+type HomeShowcase struct {
+	Title       string
+	Description string
+	ActionLabel string
+	Items       []HomeShowcaseItem
+}
+
+type HomeShowcaseItem struct {
+	Name         string
+	Category     string
+	Description  string
+	PreviewNote  string
+	Capabilities []string
+	UseLabel     string
+	PreviewLabel string
+	Tone         string
+}
+
+type HomeNotice struct {
+	Title       string
+	Description string
+	ActionLabel string
+}
+
+type HomeAccessibility struct {
+	PageLabel        string
+	ChatFormLabel    string
+	ComposerLabel    string
+	SendLabel        string
+	AttachmentLabel  string
+	AssistantLabel   string
+	ShortcutLabel    string
+	SuggestionsLabel string
+	WorkflowLabel    string
+	ToolsLabel       string
+	ShowcaseLabel    string
+	NoticeLabel      string
 }
 
 // SampleData is a second stub route for onboarding new pages.

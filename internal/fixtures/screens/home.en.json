@@ -3,5 +3,220 @@
   "title": "Home",
   "welcome": "Welcome",
   "welcome_brand": "BuildY",
-  "description": "Prototype FastyGo applications from prompts, specs, previews, and generated source."
+  "description": "Prototype FastyGo applications from prompts, specs, previews, and generated source.",
+  "workspace": {
+    "label": "My Workspace",
+    "prototype_mode": "Prototype Mode",
+    "profile_name": "Alex Developer",
+    "profile_initial": "AD"
+  },
+  "hero": {
+    "title": "What do you want to build?",
+    "subtitle": "Describe your idea in natural language. BuildY will plan, model, and generate a FastyGo application prototype on mock fixtures.",
+    "prompt_placeholder": "Describe an app, landing page, CRM, CMS, portal...",
+    "primary_action": "Generate prototype",
+    "helper_text": "BuildY turns plain-language intent into a structured plan, CMS model, preview, and source snapshot.",
+    "attachment_label": "Attach reference",
+    "assistant_label": "Refine with AI",
+    "shortcut_label": "Open slash commands",
+    "keyboard_hint": "Shift+Enter for a new line"
+  },
+  "prompt_suggestions": [
+    {
+      "label": "Create SaaS landing with CMS content",
+      "icon": "sparkles"
+    },
+    {
+      "label": "Build admin dashboard",
+      "icon": "chart"
+    },
+    {
+      "label": "Generate CRM workspace",
+      "icon": "users"
+    },
+    {
+      "label": "Create content portal",
+      "icon": "file"
+    }
+  ],
+  "workflow_steps": [
+    {
+      "label": "Plan",
+      "description": "Structured request and scope",
+      "icon": "list",
+      "tone": "violet"
+    },
+    {
+      "label": "Model",
+      "description": "Content types and fields",
+      "icon": "database",
+      "tone": "green"
+    },
+    {
+      "label": "Preview",
+      "description": "Live behavior mock",
+      "icon": "eye",
+      "tone": "blue"
+    },
+    {
+      "label": "Source",
+      "description": "Generated Go and Templ",
+      "icon": "code",
+      "tone": "slate"
+    },
+    {
+      "label": "Export",
+      "description": "Snapshot or repository handoff",
+      "icon": "download",
+      "tone": "amber"
+    }
+  ],
+  "tool_cards": [
+    {
+      "title": "Prompt Plan",
+      "description": "Turn your request into a structured application plan.",
+      "icon": "list",
+      "tone": "violet"
+    },
+    {
+      "title": "CMS Model",
+      "description": "Define content types, fields, relations, and validation.",
+      "icon": "database",
+      "tone": "green"
+    },
+    {
+      "title": "Preview",
+      "description": "Open a live mock preview of your application.",
+      "icon": "eye",
+      "tone": "blue"
+    },
+    {
+      "title": "Source",
+      "description": "Read-only generated source for code, config, and schema.",
+      "icon": "code",
+      "tone": "slate"
+    },
+    {
+      "title": "Diff Review",
+      "description": "Review changes in code, content, and schema.",
+      "icon": "sparkles",
+      "tone": "amber"
+    },
+    {
+      "title": "Export",
+      "description": "Export source snapshot or open repository mock.",
+      "icon": "download",
+      "tone": "blue"
+    }
+  ],
+  "showcase": {
+    "title": "Explore powerful starting points",
+    "description": "Use any of these mock applications as a starting point for your workspace.",
+    "action_label": "View all templates",
+    "items": [
+      {
+        "name": "AppCMS",
+        "category": "CMS",
+        "description": "Content websites, pages, media, and taxonomies.",
+        "preview_note": "Discover stories that inspire",
+        "capabilities": [
+          "Content types & fields",
+          "Pages & navigation",
+          "Media library"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "blue"
+      },
+      {
+        "name": "AppCRM",
+        "category": "CRM",
+        "description": "Leads, contacts, pipelines, and activities.",
+        "preview_note": "Pipeline workspace",
+        "capabilities": [
+          "Lead & contact management",
+          "Pipelines & stages",
+          "Activities & reminders"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "green"
+      },
+      {
+        "name": "AppSuite",
+        "category": "Suite",
+        "description": "Suite launcher, workspace switcher, and product hub.",
+        "preview_note": "Launchpad",
+        "capabilities": [
+          "Workspace switcher",
+          "Product hub",
+          "Role-based access"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "blue"
+      },
+      {
+        "name": "Director",
+        "category": "Ops",
+        "description": "Operations dashboard, approvals, and status center.",
+        "preview_note": "Operations cockpit",
+        "capabilities": [
+          "Operations overview",
+          "Approvals & workflows",
+          "Status & alerts"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "amber"
+      },
+      {
+        "name": "Contentor",
+        "category": "Editorial",
+        "description": "Editorial workspace, planning and publishing flow.",
+        "preview_note": "Editorial calendar",
+        "capabilities": [
+          "Content planning",
+          "Editorial workflow",
+          "Publishing & scheduling"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "violet"
+      },
+      {
+        "name": "Webmaster",
+        "category": "SEO",
+        "description": "SEO, site health, redirects, and analytics-ready pages.",
+        "preview_note": "Site health score",
+        "capabilities": [
+          "Site health monitoring",
+          "Redirects management",
+          "SEO & meta optimization"
+        ],
+        "use_label": "Use as starting point",
+        "preview_label": "Preview",
+        "tone": "green"
+      }
+    ]
+  },
+  "notice": {
+    "title": "You're in Prototype Mode",
+    "description": "Everything here is powered by mock fixtures. No external services, no real repos, no billing. Perfect for exploring and building ideas.",
+    "action_label": "Learn more about Prototype Mode"
+  },
+  "aria": {
+    "page_label": "BuildY prototype workspace home",
+    "chat_form_label": "Prototype generation prompt",
+    "composer_label": "Describe what you want BuildY to create",
+    "send_label": "Generate prototype from prompt",
+    "attachment_label": "Attach a reference for the prompt",
+    "assistant_label": "Ask AI to refine the prompt",
+    "shortcut_label": "Open prompt command shortcuts",
+    "suggestions_label": "Suggested prototype prompts",
+    "workflow_label": "Prototype generation workflow",
+    "tools_label": "BuildY workflow tools",
+    "showcase_label": "Starting point templates",
+    "notice_label": "Prototype mode notice"
+  }
 }

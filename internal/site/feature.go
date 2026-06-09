@@ -12,6 +12,7 @@ const (
 	assetCSS     = "/static/css/app.css"
 	assetThemeJS = "/static/js/theme.js"
 	assetAppJS   = "/static/js/ui8kit.js"
+	assetChatJS  = "/static/js/chat-composer.js"
 )
 
 // Feature wires public HTTP routes for the app shell (header nav, i18n, theme).

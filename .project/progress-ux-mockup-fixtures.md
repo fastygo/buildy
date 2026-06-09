@@ -2,7 +2,7 @@
 
 Status: active LLM progress tracker  
 Created: 2026-06-08  
-Last updated: 2026-06-08  
+Last updated: 2026-06-09  
 Scope: fixture-driven BuildY home mockup and design system.
 
 ## How To Use This File
@@ -37,13 +37,13 @@ Plan prompts here. Keep this file short enough for repeated LLM context.
 The current target is the BuildY home screen mockup:
 
 - [ ] Desktop app shell with top bar and left icon rail.
-- [ ] Hero chat command center.
-- [ ] Tool cards below the chat.
-- [ ] Showcase grid for AppCMS, AppCRM, AppSuite, Director, Contentor, Webmaster.
-- [ ] Prototype-mode notice.
-- [ ] Dark theme.
-- [ ] Mobile menu.
-- [ ] Language switch.
+- [x] Hero chat command center.
+- [x] Tool cards below the chat.
+- [x] Showcase grid for AppCMS, AppCRM, AppSuite, Director, Contentor, Webmaster.
+- [x] Prototype-mode notice.
+- [x] Dark theme.
+- [x] Mobile menu.
+- [x] Language switch.
 
 Showcase names are fixture presets only. They are not repo dependencies.
 
@@ -66,12 +66,12 @@ Workspace folders:
 
 Rules:
 
-- [ ] Do not add `@Blank` as a BuildY dependency.
-- [ ] Do not copy product scope from `@Blank`; use it only as a UI implementation reference.
-- [ ] Do not add showcase apps as BuildY dependencies.
-- [ ] Do not add real GitHub, billing, deploy, live AppCMS sync, or sandbox execution.
-- [ ] Keep BuildY mock data in BuildY-owned fixtures.
-- [ ] Put reusable Platform changes behind a proven generic need.
+- [x] Do not add `@Blank` as a BuildY dependency.
+- [x] Do not copy product scope from `@Blank`; use it only as a UI implementation reference.
+- [x] Do not add showcase apps as BuildY dependencies.
+- [x] Do not add real GitHub, billing, deploy, live AppCMS sync, or sandbox execution.
+- [x] Keep BuildY mock data in BuildY-owned fixtures.
+- [x] Put reusable Platform changes behind a proven generic need.
 
 ## Reference-Only Implementation Patterns
 
@@ -90,14 +90,14 @@ Do not copy `@Blank` wholesale. Adapt only the smallest useful pattern.
 
 These requirements apply to every home mockup chunk:
 
-- [ ] Dark theme is mandatory.
-- [ ] Mobile menu is mandatory.
-- [ ] Language switching is mandatory.
-- [ ] The home screen must render from fixtures.
-- [ ] User-facing copy must be localizable.
-- [ ] The UI must communicate "prototype workspace", not "browser IDE".
-- [ ] Generated source areas, if shown, must be readonly.
-- [ ] Showcase cards must remain presets, not imports.
+- [x] Dark theme is mandatory.
+- [x] Mobile menu is mandatory.
+- [x] Language switching is mandatory.
+- [x] The home screen must render from fixtures.
+- [x] User-facing copy must be localizable.
+- [x] The UI must communicate "prototype workspace", not "browser IDE".
+- [x] Generated source areas, if shown, must be readonly.
+- [x] Showcase cards must remain presets, not imports.
 
 ## Plan Chunk Progress
 
@@ -162,118 +162,118 @@ Acceptance:
 
 Source: `.project/checklist-plan.md`, Plan Chunk 04.
 
-- [ ] Define `HomeFixture`.
-- [ ] Define workspace identity fixture data.
-- [ ] Define user profile fixture data.
+- [x] Define `HomeFixture`.
+- [x] Define workspace identity fixture data.
+- [x] Define user profile fixture data.
 - [ ] Define navigation fixture data.
-- [ ] Define hero chat fixture data.
-- [ ] Define prompt suggestion fixture data.
-- [ ] Define tool card fixture data.
-- [ ] Define showcase app fixture data.
-- [ ] Define prototype-mode notice fixture data.
-- [ ] Define locale fixture data.
-- [ ] Define theme metadata fixture data.
+- [x] Define hero chat fixture data.
+- [x] Define prompt suggestion fixture data.
+- [x] Define tool card fixture data.
+- [x] Define showcase app fixture data.
+- [x] Define prototype-mode notice fixture data.
+- [x] Define locale fixture data.
+- [x] Define theme metadata fixture data.
 
 Showcase fixture presets:
 
-- [ ] AppCMS.
-- [ ] AppCRM.
-- [ ] AppSuite.
-- [ ] Director.
-- [ ] Contentor.
-- [ ] Webmaster.
+- [x] AppCMS.
+- [x] AppCRM.
+- [x] AppSuite.
+- [x] Director.
+- [x] Contentor.
+- [x] Webmaster.
 
 Acceptance:
 
-- [ ] Home screen can render entirely from fixtures.
-- [ ] Showcase fixture presets do not imply imports or repo dependencies.
+- [x] Home screen can render entirely from fixtures.
+- [x] Showcase fixture presets do not imply imports or repo dependencies.
 
 ### Chunk 05 — Hero Chat Command Center
 
 Source: `.project/checklist-plan.md`, Plan Chunk 05.
 
-- [ ] Render or specify hero heading.
-- [ ] Render or specify hero subtitle.
-- [ ] Render or specify large prompt input box.
-- [ ] Render or specify input action icons.
-- [ ] Render or specify primary generate CTA.
-- [ ] Render or specify prompt suggestion chips.
-- [ ] Render or specify right-side workflow preview.
+- [x] Render or specify hero heading.
+- [x] Render or specify hero subtitle.
+- [x] Render or specify large prompt input box.
+- [x] Render or specify input action icons.
+- [x] Render or specify primary generate CTA.
+- [x] Render or specify prompt suggestion chips.
+- [x] Render or specify right-side workflow preview.
 - [ ] Add disabled state fixture.
 - [ ] Add loading state fixture.
 - [ ] Add validation error state fixture.
 
 Acceptance:
 
-- [ ] Chat is the primary visual focus.
-- [ ] Chat feels like a build command center, not support chat.
-- [ ] Hero chat works in dark theme.
-- [ ] Hero chat works in mobile layout.
+- [x] Chat is the primary visual focus.
+- [x] Chat feels like a build command center, not support chat.
+- [x] Hero chat works in dark theme.
+- [x] Hero chat works in mobile layout.
 
 ### Chunk 06 — Tool Cards Row
 
 Source: `.project/checklist-plan.md`, Plan Chunk 06.
 
-- [ ] Render or specify Request Plan card.
-- [ ] Render or specify CMS Model card.
-- [ ] Render or specify Preview card.
-- [ ] Render or specify Source Code card.
-- [ ] Render or specify Change Review card.
-- [ ] Render or specify Export card.
-- [ ] Add icon, title, and description for each card.
-- [ ] Add responsive card layout.
-- [ ] Add dark theme card treatment.
+- [x] Render or specify Request Plan card.
+- [x] Render or specify CMS Model card.
+- [x] Render or specify Preview card.
+- [x] Render or specify Source Code card.
+- [x] Render or specify Change Review card.
+- [x] Render or specify Export card.
+- [x] Add icon, title, and description for each card.
+- [x] Add responsive card layout.
+- [x] Add dark theme card treatment.
 
 Acceptance:
 
-- [ ] Cards explain prompt -> plan -> model -> preview -> source -> review -> export.
-- [ ] Cards remain static/mock in this phase.
-- [ ] Cards render from fixtures.
+- [x] Cards explain prompt -> plan -> model -> preview -> source -> review -> export.
+- [x] Cards remain static/mock in this phase.
+- [x] Cards render from fixtures.
 
 ### Chunk 07 — Showcase Apps Grid
 
 Source: `.project/checklist-plan.md`, Plan Chunk 07.
 
-- [ ] Render or specify AppCMS showcase card.
-- [ ] Render or specify AppCRM showcase card.
-- [ ] Render or specify AppSuite showcase card.
-- [ ] Render or specify Director showcase card.
-- [ ] Render or specify Contentor showcase card.
-- [ ] Render or specify Webmaster showcase card.
-- [ ] Add thumbnail mock area for each card.
-- [ ] Add category badge for each card.
-- [ ] Add three capability bullets for each card.
-- [ ] Add primary CTA for each card.
-- [ ] Add secondary preview CTA for each card.
-- [ ] Add mobile showcase layout.
-- [ ] Add dark theme showcase treatment.
+- [x] Render or specify AppCMS showcase card.
+- [x] Render or specify AppCRM showcase card.
+- [x] Render or specify AppSuite showcase card.
+- [x] Render or specify Director showcase card.
+- [x] Render or specify Contentor showcase card.
+- [x] Render or specify Webmaster showcase card.
+- [x] Add thumbnail mock area for each card.
+- [x] Add category badge for each card.
+- [x] Add three capability bullets for each card.
+- [x] Add primary CTA for each card.
+- [x] Add secondary preview CTA for each card.
+- [x] Add mobile showcase layout.
+- [x] Add dark theme showcase treatment.
 
 Acceptance:
 
-- [ ] Grid matches the target mockup density.
-- [ ] Cards are fixture presets only.
-- [ ] Mobile layout remains usable.
+- [x] Grid matches the target mockup density.
+- [x] Cards are fixture presets only.
+- [x] Mobile layout remains usable.
 
 ### Chunk 08 — Visual QA States
 
 Source: `.project/checklist-plan.md`, Plan Chunk 08.
 
-- [ ] Happy path state.
+- [x] Happy path state.
 - [ ] Loading showcase state.
 - [ ] Empty showcase state.
 - [ ] Prompt validation error state.
 - [ ] Generation disabled state.
-- [ ] Prototype mode notice state.
-- [ ] Mobile menu open state.
-- [ ] Dark theme active state.
-- [ ] Russian locale active state.
-- [ ] English locale active state.
+- [x] Prototype mode notice state.
+- [x] Mobile menu open state.
+- [x] Dark theme active state.
+- [x] Russian locale active state.
+- [x] English locale active state.
 
 Acceptance:
 
 - [ ] Every state is represented by fixtures.
-- [ ] No backend behavior is required.
-- [ ] Screens remain Templ-first and mock-driven.
+- [x] No backend behavior is required.
+- [x] Screens remain Templ-first and mock-driven.
 
 ## Later UX Prototype Roadmap
 
@@ -328,15 +328,15 @@ once implementation begins.
 
 ## Definition Of Done For Home Mockup
 
-- [ ] Home screen renders from fixtures.
-- [ ] Desktop layout matches the target mockup.
+- [x] Home screen renders from fixtures.
+- [x] Desktop layout matches the target mockup.
 - [ ] Dark theme is implemented and visually checked.
 - [ ] Mobile menu is implemented and visually checked.
-- [ ] Language switch is implemented for English and Russian.
-- [ ] Hero chat, tool cards, showcase grid, and prototype notice are present.
-- [ ] Showcase presets do not introduce extra module dependencies.
-- [ ] No live GitHub, billing, deployment, AppCMS sync, or sandbox behavior exists.
-- [ ] `go test ./...` passes once BuildY code exists.
+- [x] Language switch is implemented for English and Russian.
+- [x] Hero chat, tool cards, showcase grid, and prototype notice are present.
+- [x] Showcase presets do not introduce extra module dependencies.
+- [x] No live GitHub, billing, deployment, AppCMS sync, or sandbox behavior exists.
+- [x] `go test ./...` passes once BuildY code exists.
 
 ## Progress Log
 
@@ -349,3 +349,11 @@ once implementation begins.
 - [x] Created `.project/checklist-plan.md` for copyable Plan-mode chunks.
 - [x] Converted this file into an LLM-friendly checkbox progress tracker.
 - [ ] Start Plan Chunk 01 — Design System Foundation.
+
+### 2026-06-09
+
+- [x] Added persistent spec for the bilingual YC-quality runtime home redesign.
+- [x] Expanded EN/RU home fixtures for workspace identity, hero chat, suggestions, workflow steps, tool cards, showcase presets, prototype notice, and ARIA labels.
+- [x] Rebuilt runtime `HomePage` inside the existing shell without importing the isolated catalog block.
+- [x] Added progressive chat textarea enhancement for auto-resize and internal scrolling on long prompts.
+- [x] Verified with `bun run verify` (templ generate, CSS/JS build, ui8px lint, ARIA validation, Go tests).
